@@ -4,8 +4,6 @@ import { drawUpscaled } from '../lib/canvas';
 import { options, result, setResult, source } from '../store';
 import styles from './PreviewCanvas.module.scss';
 
-const DEBOUNCE_MS = 16;
-
 type Zoom = 'fit' | 1 | 2 | 4;
 const ZOOMS: { value: Zoom; label: string }[] = [
   { value: 'fit', label: 'Fit' },
@@ -37,13 +35,13 @@ export default function PreviewCanvas() {
     const opts = { ...options, palette: [...options.palette] };
     if (!src) return;
 
-    const timer = setTimeout(async () => {
-      const image = await client.render(opts);
+    // No debounce: the client keeps one render in flight and drops all but the
+    // latest queued options, which already coalesces fast slider input.
+    void client.render(opts).then((image) => {
       if (!image) return;
       drawUpscaled(canvas, image, opts.pixelSize, src.image.width, src.image.height);
       setResult({ image, pixelSize: opts.pixelSize });
-    }, DEBOUNCE_MS);
-    onCleanup(() => clearTimeout(timer));
+    });
   });
 
   // Track the viewport's content box so Fit can pick a crisp scale.
