@@ -1,0 +1,25 @@
+@use './mixins' as *;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+
+  @include narrow {
+    overflow: visible;
+  }
+}
+
+button,
+input,
+select {
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}

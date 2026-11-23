@@ -1,0 +1,4 @@
+node_modules
+dist
+.hallmark
+.DS_Store

@@ -1,0 +1,9 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: Console (deal 1/3, seed image-dithering-tool-drop-f2e7·bee8c9b6·2026-11-23·r0) · redesign: full
+ * nav: top bar, wordmark + open action · signature: the dithered image large on the deepest step, source and output resolution read out beneath it in the instrument face, zoomable to 4× · states: empty, loaded, dragging, load error · console: light grey, off-white and orange from the user reference card (by request): warm off-white panels, near-black ink and strong rules, one orange signal
+ * axes: light/grotesk-sans/chromatic-amber · posture: restrained · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V4 · weakest: P, a tool has little to argue; it argues by keeping the image on a neutral ground so the palette reads true */
+/* Hallmark · finish-review: subagent · 7 findings · 6 resolved 1 dismissed (copy is English by the user's request, lang="en") · gap: empty state unreachable in the browser, the sample image always loads */
+/* Hallmark · waive 26b · ControlPanel.module.scss has :active and :disabled on its buttons · sloplint reads .css only, the compiled module carries both states */
+/* Hallmark · dropped onDragLeave={() => setDragging(false)} · replaced by a handler that ignores drags crossing the zone's own children, so the drop outline no longer flickers */
+@import url("./tokens.css");
+@import url("./base.css");

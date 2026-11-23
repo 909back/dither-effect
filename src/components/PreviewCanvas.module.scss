@@ -1,0 +1,134 @@
+@use '../styles/mixins' as *;
+
+.frame {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+.viewport {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  padding: var(--space-lg);
+  overflow: hidden;
+
+  @include narrow {
+    padding: var(--space-md);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: -2px;
+  }
+}
+
+.zoomed {
+  overflow: auto;
+  overscroll-behavior: contain;
+  cursor: grab;
+
+  .canvas {
+    max-width: none;
+    max-height: none;
+    flex: none;
+  }
+}
+
+.panning {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.canvas {
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  image-rendering: pixelated;
+  outline: var(--rule-hair) solid var(--color-rule);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: 48px;
+  padding: 0 var(--space-md);
+  border-top: var(--rule-hair) solid var(--color-rule);
+  background: var(--color-paper);
+  color: var(--color-ink);
+
+  @include narrow {
+    flex-wrap: wrap;
+    row-gap: var(--space-xs);
+    padding-block: var(--space-xs);
+  }
+}
+
+.meta {
+  @include measured;
+  color: var(--color-cool);
+  min-width: 0;
+  overflow-wrap: break-word;
+
+  @include narrow {
+    flex: 1 0 100%;
+  }
+}
+
+.zoom {
+  display: flex;
+  flex: none;
+  gap: var(--rule-hair);
+  padding: 0;
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  background: var(--color-rule);
+  overflow: hidden;
+
+  button {
+    position: relative;
+    min-width: 44px;
+    min-height: 32px;
+    padding: 0 var(--space-sm);
+    border: 0;
+    background: var(--color-paper-2);
+    color: var(--color-ink-2);
+    font-size: var(--text-sm);
+    transition: background-color var(--dur-micro) var(--ease-out);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -6px 0;
+    }
+
+    &:hover {
+      background: var(--color-paper);
+      color: var(--color-ink);
+    }
+
+    &:active {
+      background: var(--color-paper-3);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: -2px;
+      z-index: 1;
+    }
+
+    &[aria-pressed='true'] {
+      background: var(--color-cool-soft);
+      color: var(--color-cool);
+      font-weight: 500;
+    }
+  }
+}

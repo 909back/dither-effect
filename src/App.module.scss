@@ -1,0 +1,71 @@
+@use './styles/mixins' as *;
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  grid-template-rows: 52px minmax(0, 1fr);
+  grid-template-areas:
+    'bar bar'
+    'stage inspector';
+  height: 100dvh;
+
+  @include narrow {
+    height: auto;
+    min-height: 100dvh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 52px auto auto;
+    grid-template-areas:
+      'bar'
+      'stage'
+      'inspector';
+  }
+}
+
+.bar {
+  grid-area: bar;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-inline: var(--space-md);
+  border-bottom: var(--rule-hair) solid var(--color-rule);
+  background: var(--color-paper);
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--font-wordmark);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  flex: none;
+}
+
+.barActions {
+  margin-left: auto;
+  flex: none;
+}
+
+.stage {
+  grid-area: stage;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-paper-3);
+
+  @include narrow {
+    height: 62svh;
+  }
+}
+
+.inspector {
+  grid-area: inspector;
+  min-height: 0;
+  border-left: var(--rule-hair) solid var(--color-rule);
+  background: var(--color-paper-2);
+
+  @include narrow {
+    border-left: 0;
+    border-top: var(--rule-hair) solid var(--color-rule);
+  }
+}

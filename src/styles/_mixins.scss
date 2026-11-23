@@ -1,0 +1,20 @@
+// Values live in tokens.css as custom properties; this file holds only mixins.
+
+@mixin narrow {
+  @media (max-width: 60rem) {
+    @content;
+  }
+}
+
+@mixin label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+@mixin measured {
+  font-family: var(--font-outlier);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums slashed-zero;
+}
