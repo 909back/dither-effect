@@ -8,15 +8,12 @@
 
 팔레트에 있는 몇 가지 색만으로 이미지를 그릴 때 중간 톤을 점의 밀도로 표현하는 방법입니다. 예를 들어 검정과 흰색만 있는 1-bit 팔레트에서는 회색 영역을 검은 점과 흰 점을 섞어서 그립니다.
 
-이 앱의 알고리즘은 두 종류입니다.
-
-- Bayer, Halftone: 픽셀 위치마다 정해진 임계값과 밝기를 비교합니다. 결과에 일정한 격자 패턴이 남습니다.
-- Floyd–Steinberg, Atkinson: 픽셀 색을 정하면서 생긴 오차를 아직 처리하지 않은 주변 픽셀에 더합니다. 패턴이 덜 규칙적입니다.
+Bayer와 Halftone은 픽셀 위치마다 정해진 임계값과 밝기를 비교하기 때문에 결과에 일정한 격자 패턴이 남습니다. Floyd-Steinberg와 Atkinson은 픽셀 색을 정하면서 생긴 오차를 아직 처리하지 않은 주변 픽셀에 더하고, 그래서 점이 덜 규칙적으로 찍힙니다.
 
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/gallery-bayer4.png" alt="Bayer 4×4, 1-bit" /><br /><sub>Bayer 4×4 · 1-bit</sub></td>
-    <td align="center"><img src="docs/screenshots/gallery-floyd-steinberg.png" alt="Floyd–Steinberg, Ink" /><br /><sub>Floyd–Steinberg · Ink</sub></td>
+    <td align="center"><img src="docs/screenshots/gallery-floyd-steinberg.png" alt="Floyd-Steinberg, Ink" /><br /><sub>Floyd-Steinberg · Ink</sub></td>
     <td align="center"><img src="docs/screenshots/gallery-atkinson.png" alt="Atkinson, Green LCD" /><br /><sub>Atkinson · Green LCD</sub></td>
   </tr>
   <tr>
